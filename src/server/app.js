@@ -8,6 +8,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var port = process.env.PORT || 8001;
 var four0four = require('./utils/404')();
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017');
 
 var environment = process.env.NODE_ENV;
 

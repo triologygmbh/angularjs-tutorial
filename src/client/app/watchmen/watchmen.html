@@ -1,0 +1,67 @@
+<section id="dashboard-view" class="mainbar">
+  <section class="matter">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="widget wviolet">
+            <div ht-widget-header title="Watchmen" allow-collapse="true"></div>
+            <div class="widget-content text-center text-info">
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Alias</th>
+                    <th>Id</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="w in vm.watchmen">
+                    <td>{{w.firstName}}</td>
+                    <td>{{w.lastName}}</td>
+                    <td>{{w.alias}}</td>
+                    <td>{{w._id}}
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+            </div>
+            <div class="widget-foot">
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <span><h3>Add new Hero</h3></span>
+          <form ng-submit="vm.sendData()">
+              <div class="form-group row">
+                <label for="firstNameInput" class="col-xs-2 col-form-label">First Name</label>
+                <input class="form-control" type="text" placeholder="firstname" id="firstNameInput" ng-model="vm.firstName" required>
+              </div>
+              <div class="form-group row">  
+                <label for="lastNameInput" class="col-xs-2 col-form-label">Last Name</label>
+                <input class="form-control" type="text" placeholder="lastname" id="lastNameInput" ng-model="vm.lastName" required>
+              </div>  
+              <div class="form-group row">  
+                <label for="aliasInput" class="col-xs-2 col-form-label">Alias</label>
+                <input class="form-control" type="text" placeholder="alias" id="aliasInput" ng-model="vm.alias" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Save new user</button>
+          </form>
+        </div>
+      <div class="col-md-3">
+        <span><h3>User deletion by Id</h3></span>
+        <form ng-submit="vm.deleteData()">
+          <div class="form-group row">
+            <label for="idDeleteInput" class="col-xs-2 col-form-label">Id to delete</label>
+            <input class="form-control" type="text" placeholder="id" id="idDeleteInput" ng-model="vm.idToDel" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Delete user by Id</button>
+        </form>
+      </div>
+    </div>
+    </div>
+  </section>
+</section>

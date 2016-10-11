@@ -1,7 +1,7 @@
-(function() {
+(function () {
   'use strict';
 
-  angular.module('app.admin', [
+  angular.module('app.watchmen', [
     'app.core',
     'app.widgets'
   ]);

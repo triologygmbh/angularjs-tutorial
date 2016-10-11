@@ -13,8 +13,8 @@
   }
 
   var config = {
-    appErrorPrefix: '[helloWorld Error] ',
-    appTitle: 'helloWorld'
+    appErrorPrefix: '[AngularjsTutorial Error] ',
+    appTitle: 'AngularJS Tutorial'
   };
 
   core.value('config', config);

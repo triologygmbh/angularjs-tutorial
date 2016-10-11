@@ -524,7 +524,6 @@ function startBrowserSync(isDev, specRunner) {
   if (specRunner) {
     options.startPath = config.specRunnerFile;
   }
-
   browserSync(options);
 }
 

@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   angular
@@ -9,16 +9,15 @@
   /* @ngInject */
   function dataservice($http, $q, exception, logger) {
     var service = {
-      getPeople: getPeople,
-      getMessageCount: getMessageCount
+      getWatchmen: getWatchmen,
+      postWatchmen: postWatchmen,
+      deleteWatchmenById: deleteWatchmenById
     };
 
     return service;
 
-    function getMessageCount() { return $q.when(72); }
-
-    function getPeople() {
-      return $http.get('/api/people')
+    function getWatchmen() {
+      return $http.get('/api/watchmen')
         .then(success)
         .catch(fail);
 
@@ -27,7 +26,35 @@
       }
 
       function fail(e) {
-        return exception.catcher('XHR Failed for getPeople')(e);
+        return exception.catcher('XHR Failed for getWatchmen')(e);
+      }
+    }
+
+    function postWatchmen(data) {
+      return $http.post('/api/watchmen', data)
+        .then(success)
+        .catch(fail);
+
+      function success(response) {
+        return response.data;
+      }
+
+      function fail(e) {
+        return exception.catcher('XHR Failed for postWatchmen')(e);
+      }
+    }
+
+    function deleteWatchmenById(data) {
+      return $http.delete('/api/watchmen/' + data, data)
+        .then(success)
+        .catch(fail);
+
+      function success(response) {
+        return response.data;
+      }
+
+      function fail(e) {
+        return exception.catcher('XHR Failed for deleteWatchmenById')(e);
       }
     }
   }
