@@ -1,28 +1,89 @@
 var router = require('express').Router();
 var four0four = require('./utils/404')();
-var data = require('./data');
+var Hero = require('./utils/models/hero'); // mongoose model
 
-router.get('/people', getPeople);
-router.get('/person/:id', getPerson);
+router.get('/watchmen', getWatchmen); // <host-ip>:<port>/api/watchmen
+router.post('/watchmen', postWatchmen);
+router.get('/watchmen/:heroId', getWatchmenById);
+router.put('/watchmen/:heroId', updateWatchmenById);
+router.delete('/watchmen/:heroId', deleteWatchmenById);
 router.get('/*', four0four.notFoundMiddleware);
 
 module.exports = router;
 
 //////////////
-
-function getPeople(req, res, next) {
-  res.status(200).send(data.people);
+// GET, POST
+function getWatchmen(req, res, next) {
+  Hero.find(function (err, heroes) {
+    if (err) {
+      res.send(err);
+    }
+    else {
+      res.json(heroes);
+    }
+  });
 }
 
-function getPerson(req, res, next) {
-  var id = +req.params.id;
-  var person = data.people.filter(function(p) {
-    return p.id === id;
-  })[0];
+function postWatchmen(req, res, next) {
+  var hero = new Hero();
+  hero.firstName = req.body.firstName;
+  hero.lastName = req.body.lastName;
+  hero.alias = req.body.alias;
 
-  if (person) {
-    res.status(200).send(person);
-  } else {
-    four0four.send404(req, res, 'person ' + id + ' not found');
-  }
+  hero.save(function (err) {
+    if (err) {
+      res.send(err);
+    }
+    else {
+      res.json({ message: 'Hero ' + req.body.alias + ' created!' });
+    }
+  });
+}
+
+//////////////
+// GET, PUT, DELETE by Id
+
+function getWatchmenById(req, res, next) {
+  Hero.findById(req.params.heroId, function (err, hero) {
+    if (err) {
+      res.send(err);
+    }
+    else {
+      res.json(hero);
+    }
+  });
+}
+
+function updateWatchmenById(req, res, next) {
+  Hero.findById(req.params.heroId, function (err, hero) {
+    if (err) {
+      res.send(err);
+    }
+    else {
+      hero.firstName = req.body.firstName;
+      hero.lastName = req.body.lastName;
+      hero.alias = req.body.alias;
+    }
+    hero.save(function (err) {
+      if (err) {
+        res.send(err);
+      }
+      else {
+        res.json({ message: 'Hero ' + req.body.alias + ' updated!' });
+      }
+    });
+  });
+}
+
+function deleteWatchmenById(req, res, next) {
+  Hero.remove({
+    _id: req.params.heroId
+  }, function (err, hero) {
+    if (err) {
+      res.send(err);
+    }
+    else {
+      res.json({ message: 'Hero with id ' + req.params.heroId + ' successfully deleted!' });
+    }
+  });
 }

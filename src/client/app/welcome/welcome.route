@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.dashboard')
+    .module('app.welcome')
     .run(appRun);
 
   appRun.$inject = ['routerHelper'];
@@ -14,16 +14,16 @@
   function getStates() {
     return [
       {
-        state: 'dashboard',
+        state: 'welcome',
         config: {
-          url: '/',
-          templateUrl: 'app/dashboard/dashboard.html',
-          controller: 'DashboardController',
+          url: '/welcome',
+          templateUrl: 'app/welcome/welcome.html',
+          controller: 'WelcomeController',
           controllerAs: 'vm',
-          title: 'dashboard',
+          title: 'Welcome',
           settings: {
             nav: 1,
-            content: '<i class="fa fa-dashboard"></i> Dashboard'
+            content: '<i class="fa fa-lock"></i> Welcome'
           }
         }
       }
