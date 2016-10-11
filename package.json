@@ -1,7 +1,7 @@
 {
-  "name": "helloWorld",
-  "description": "helloWorld Project Generated from HotTowel Angular",
-  "version": "0.0.0",
+  "name": "angularjstutorial",
+  "description": "AngularJS Tutorial Project Generated from HotTowel Angular",
+  "version": "0.0.1",
   "scripts": {
     "init": "npm install",
     "install": "bower install",
@@ -11,6 +11,7 @@
   "dependencies": {
     "body-parser": "^1.8.2",
     "express": "^4.9.3",
+    "mongoose": "^4.6.1",
     "morgan": "^1.1.1",
     "serve-favicon": "^2.0.1"
   },
