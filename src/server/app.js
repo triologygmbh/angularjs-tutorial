@@ -21,6 +21,10 @@ app.use(logger('dev'));
 
 app.use('/api', require('./routes'));
 
+app.get('/', function(req, res){
+  res.redirect('/welcome')
+})
+
 console.log('About to crank up node');
 console.log('PORT=' + port);
 console.log('NODE_ENV=' + environment);
