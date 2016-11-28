@@ -44,8 +44,14 @@ SOFTWARE.
                     <td>{{w.firstName}}</td>
                     <td>{{w.lastName}}</td>
                     <td>{{w.alias}}</td>
-                    <td>{{w._id}}
+                    <td ng-class="{ red: vm.idToDel === w._id }">{{w._id}}</td>
                   </tr>
+                  <tr ng-if="vm.firstName || vm.lastName || vm.alias">
+                    <td>{{vm.firstName}}</td>
+                    <td>{{vm.lastName}}</td>
+                    <td>{{vm.alias}}</td>
+                    <td>Not yet in DB</td>
+                    </tr>
                 </tbody>
               </table>
               </div>
