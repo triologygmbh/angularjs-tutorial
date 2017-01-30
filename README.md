@@ -1,5 +1,10 @@
 # AngularJSTutorial
 
+You can find the tutorials here:
+- [AngularJS Tutorial in a Hot Towel – Part 1](https://www.triology.de/en/blog-entries/angularjs-tutorial-in-hottowel-part-1)
+- [AngularJS Tutorial in a Hot Towel – Part 2](https://www.triology.de/en/blog-entries/angularjs-tutorial-in-a-hot-towel-part-2)
+
+
 ## Prerequisites
 
 1. Install [Node.js](http://nodejs.org)
